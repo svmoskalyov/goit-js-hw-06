@@ -1,24 +1,17 @@
-const counter = {
-  counterValue: 0,
-
-  increment() {
-    this.counterValue += 1;
-  },
-  decrement() {
-    this.counterValue -= 1;
-  },
-};
-
 const incrementEl = document.querySelector('button[data-action="increment"]');
 const decrementEl = document.querySelector('button[data-action="decrement"]');
 const counterValue = document.querySelector('#value');
 
-incrementEl.addEventListener('click', () => {
-  counter.increment();
-  counterValue.textContent = counter.counterValue;
-});
+const counter = {
+  counterValue: 0,
 
-decrementEl.addEventListener('click', () => {
-  counter.decrement();
-  counterValue.textContent = counter.counterValue;
-});
+  increment() {
+    counterValue.textContent = this.counterValue += 1;
+  },
+  decrement() {
+    counterValue.textContent = this.counterValue -= 1;
+  },
+};
+
+incrementEl.addEventListener('click', () => counter.increment());
+decrementEl.addEventListener('click', () => counter.decrement());
