@@ -13,5 +13,8 @@ const counter = {
   },
 };
 
-incrementButtonEl.addEventListener('click', () => counter.increment());
-decrementButtonEl.addEventListener('click', () => counter.decrement());
+const incrementButtonElClick = () => counter.increment();
+const decrementButtonElClick = () => counter.decrement();
+
+incrementButtonEl.addEventListener('click', incrementButtonElClick);
+decrementButtonEl.addEventListener('click', decrementButtonElClick);
