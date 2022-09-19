@@ -1,6 +1,6 @@
 const ingredients = ['Potatoes', 'Mushrooms', 'Garlic', 'Tomatos', 'Herbs', 'Condiments'];
 
-const ingredientListEl = document.getElementById('ingredients');
+const ingredientListEl = document.querySelector('#ingredients');
 
 const createIngredientListEl = options => {
   return options.map(item => {
