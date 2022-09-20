@@ -6,6 +6,9 @@ const refs = {
   containerBoxes: document.querySelector('#boxes'),
 };
 
+// console.log(refs.containerBoxes.children);
+// console.log(refs.containerBoxes.lastElementChild);
+
 refs.buttonCreate.addEventListener('click', onButtonCreateClick);
 refs.buttonDestroy.addEventListener('click', destroyBoxes);
 
@@ -20,11 +23,18 @@ function onButtonCreateClick() {
 
 function createBoxes(amount) {
   const arr = new Array(amount).fill(null);
+  let a = 30;
+  let b = 30;
+
+  if (refs.containerBoxes.lastElementChild) {
+    a = 10 + parseInt(refs.containerBoxes.lastElementChild.style.width);
+    b = 10 + parseInt(refs.containerBoxes.lastElementChild.style.height);
+  }
 
   return arr.map((e, i) => {
     const boxEl = document.createElement('div');
-    boxEl.style.width = `${30 + i * 10}px`;
-    boxEl.style.height = `${30 + i * 10}px`;
+    boxEl.style.width = `${a + i * 10}px`;
+    boxEl.style.height = `${b + i * 10}px`;
     boxEl.style.backgroundColor = getRandomHexColor();
     return boxEl;
   });
