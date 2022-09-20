@@ -15,17 +15,14 @@ const images = [
 
 const galleryListEl = document.querySelector('.gallery');
 
-const createListEl = options => {
-  return options.map((element, i) => {
-    galleryListEl.insertAdjacentHTML('beforeend', `<li><img></li>`);
-    galleryListEl.children[i].classList.add('js-item');
+createListElMarkup(images);
 
-    const galleryImgEl = galleryListEl.children[i].children[0];
-    galleryImgEl.classList.add('js-img');
-    galleryImgEl.src = element.url;
-    galleryImgEl.alt = element.alt;
-    galleryImgEl.width = 250;
-  });
-};
+function createListElMarkup(element) {
+  const markup = element
+    .map(({ url, alt }) => {
+      return `<li class="js-item"><img class="js-img" src="${url}" alt="${alt}"></li>`;
+    })
+    .join('');
 
-createListEl(images);
+  galleryListEl.insertAdjacentHTML('beforeend', markup);
+}
